@@ -1,0 +1,7 @@
+train:
+  random_state: 42
+  test_size: 0.2
+  rf_n_estimators: 200
+  rf_max_depth: 10
+  svr_C: 1.0
+  svr_epsilon: 0.1
