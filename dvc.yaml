@@ -1,8 +1,7 @@
 stages:
   train_model:
     cmd: |
-      python src/train.py --data data/data.csv --out models/rf_model.joblib \
-        --metrics metrics/metrics.json --model rf
+    cmd: python src/train.py --data data/data.csv --out models/rf_model.joblib --metrics metrics/metrics.json --model rf
     deps:
     - src/train.py
     - data/data.csv
@@ -11,11 +10,12 @@ stages:
     metrics:
     - metrics/metrics.json
   train_model_v2:
-    cmd: -- python src/train.py --data data/data.csv --out 
-      models/rf_model_v2.joblib --metrics metrics/metrics_v2.json --model rf
+    cmd: |
+      python src/train.py --data data/data.csv --out models/rf_model_v2.joblib \
+        --metrics metrics/metrics_v2.json --model rf
     deps:
-    - data/data.csv
     - src/train.py
+    - data/data.csv
     outs:
     - models/rf_model_v2.joblib
     metrics:
