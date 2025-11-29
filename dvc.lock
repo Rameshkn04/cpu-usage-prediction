@@ -1,0 +1,44 @@
+schema: '2.0'
+stages:
+  train_model:
+    cmd: python src/train.py --data data/data.csv --out models/rf_model.joblib 
+      --metrics metrics/metrics.json --model rf
+    deps:
+    - path: data/data.csv
+      hash: md5
+      md5: d983536f17c57d40c737b1d43cf012a7
+      size: 76301858
+    - path: src/train.py
+      hash: md5
+      md5: 0bdf1b5181856fb01ee19546197cc578
+      size: 4350
+    outs:
+    - path: metrics/metrics.json
+      hash: md5
+      md5: a9df3de2fb99180f8a8c711367069181
+      size: 128
+    - path: models/rf_model.joblib
+      hash: md5
+      md5: d6680f43405e7615b8f00db5c597487b
+      size: 18798273
+  train_model_v2:
+    cmd: python src/train.py --data data/data.csv --out 
+      models/rf_model_v2.joblib --metrics metrics/metrics_v2.json --model rf
+    deps:
+    - path: data/data.csv
+      hash: md5
+      md5: d983536f17c57d40c737b1d43cf012a7
+      size: 76301858
+    - path: src/train.py
+      hash: md5
+      md5: 0bdf1b5181856fb01ee19546197cc578
+      size: 4350
+    outs:
+    - path: metrics/metrics_v2.json
+      hash: md5
+      md5: a9df3de2fb99180f8a8c711367069181
+      size: 128
+    - path: models/rf_model_v2.joblib
+      hash: md5
+      md5: d6680f43405e7615b8f00db5c597487b
+      size: 18798273

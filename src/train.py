@@ -15,6 +15,7 @@ from sklearn.svm import SVR
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
+
 def load_data(path, use_cols=None):
     if path.lower().endswith(".csv"):
         return pd.read_csv(path)
@@ -75,6 +76,13 @@ def main(args):
     # save model (and scaler if needed)
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     joblib.dump(trained, args.out)
+    # add at the same place where joblib.dump(trained, args.out) is done
+    import json
+    os.makedirs("models", exist_ok=True)
+    json.dump(list(X.columns), open("models/feature_names.json", "w"))
+    # if you used scaler for SVR, also save it:
+    # joblib.dump(scaler, "models/rf_scaler.joblib")
+
 
     # save scaler for SVR
     if args.model == "svr":
